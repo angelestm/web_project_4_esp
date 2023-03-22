@@ -1,0 +1,8 @@
+.element__like-button {
+  height: 19px;
+}
+
+.element__like-button:hover {
+  color: #000000;
+  opacity: 0.5;
+}
