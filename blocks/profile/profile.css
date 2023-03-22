@@ -1,0 +1,7 @@
+.profile {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  column-gap: 30px;
+  margin-top: 35px;
+  margin-bottom: 45px;
+}

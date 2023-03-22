@@ -1,0 +1,32 @@
+h1, h2, h3, h4, h5, h6, p, body, a, hr {
+  margin: 0;
+  padding: 0;
+}
+
+.root {
+  background: #000000;
+  font-family: "Inter";
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.page {
+  max-width: 880px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+hr {
+  display: block;
+  /*margin: 0.5em auto 0.5em auto;*/
+  border: 1px solid #545454;
+}
