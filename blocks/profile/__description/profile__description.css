@@ -4,4 +4,6 @@
   font-size: 18px;
   line-height: 22px;
   color: #FFFFFF;
+  grid-column-start: 1;
+  grid-row-start: 2;
 }

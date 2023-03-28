@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="pages/index.css">
-  <title>Alrededor de USA</title>
+  <title>Alrededor de los EEUU</title>
 </head>
 <body class="root">
   <div class="page">
@@ -17,10 +17,12 @@
         <img src="images/profile__photo.png" alt="profile-photo" class="profile__photo">
         <div class="profile__info">
           <h2 class="profile__name">Jacques Cousteau</h2>
-          <img src="images/EditButton.png" alt="Edit-Button" class="profile__edit-button">
           <h2 class="profile__description">Explorador</h2>
+          <img src="images/EditButton.png" alt="Edit-Button" class="profile__edit-button">
         </div>
-        <img src="images/AddButton.png" alt="Add-Button" class="profile__add-button">
+        <div class="profile__add-button-container">
+          <img src="images/Vector.png" alt="Add-Button" class="profile__add-button">
+        </div>
       </section>
 
       <section class="elements">
@@ -74,7 +76,26 @@
           </div>
         </div>
       </section>
+
+    <footer class="footer">
+        <p class="footer__copyright">© 2023 Alrededor de los EEUU</p>
+      </footer>
     </main>
+  </div>
+  <div class="pop-up">
+    <div class="pop-up__container">
+      <img src="images/CloseIcon.png" alt="Icono de cerrar" class="pop-up__close-button">
+      <h2 class="pop-up__title">Editar perfil</h2>
+      <form class="form">
+        <div class="user-box">
+          <input id="user-name" type="text" placeholder="Nombre">
+        </div>
+        <div class="user-box">
+          <input id="user-about" type="text" placeholder="Acerca de mí">
+        </div>
+          <button type="submit" class="button">Guardar</button>
+      </form>
+    </div>
   </div>
   <script src="pages/script.js"></script>
 </body>
