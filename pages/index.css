@@ -1,3 +1,4 @@
+@import url(../blocks/root/normalize.css);
 @import url(../fonts/inter/inter.css);
 @import url(../blocks/root/root.css);
 @import url(../blocks/header/header.css);
@@ -25,4 +26,3 @@
 @import url(../blocks/pop-up/form/form.css);
 @import url(../blocks/pop-up/form/user-box/user-box.css);
 @import url(../blocks/pop-up/form/button/button.css);
-@import url(../blocks/media-queries/media-queries.css);
