@@ -3,3 +3,12 @@
   grid-template-columns: auto auto auto;
   grid-gap: 17px;
 }
+
+@media screen
+and (max-width: 320px) {
+  .elements {
+    grid-template-columns: auto;
+    grid-gap: 20px;
+    justify-items: center;
+  }
+}

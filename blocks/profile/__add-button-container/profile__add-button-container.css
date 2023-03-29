@@ -13,3 +13,11 @@
 .profile__add-button-container:hover {
   opacity: 0.6;
 }
+
+@media screen
+and (max-width: 320px) {
+  .profile__add-button-container {
+    width: 282px;
+    justify-self: center;
+  }
+}

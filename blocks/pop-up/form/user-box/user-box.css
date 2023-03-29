@@ -12,3 +12,10 @@
   background: transparent;
   display: flex;
 }
+
+@media screen
+and (max-width: 320px) {
+  .user-box input {
+    width: 238px;
+  }
+}

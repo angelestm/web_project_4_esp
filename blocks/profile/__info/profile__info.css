@@ -7,3 +7,13 @@
   column-gap: 25px;
   align-self: center;
 }
+
+@media screen
+and (max-width: 320px) {
+  .profile__info {
+    column-gap: 10px;
+    justify-items: center;
+    margin-top: 25px;
+    margin-bottom: 35px;
+  }
+}
