@@ -3,12 +3,8 @@ const modalElement = document.querySelector(".pop-up");
 const modalCloseButtonElement = document.querySelector(".pop-up__close-button");
 const modalFormElement = document.querySelector(".form");
 
-function displayModal() {
-  modalElement.className = "pop-up popup_opened";
-}
-
-function hideModal() {
-  modalElement.className = "pop-up";
+function handleDisplayModal() {
+  modalElement.classList.toggle("popup_opened");
 }
 
 function handleProfileFormSubmit(event) {
@@ -23,10 +19,10 @@ function handleProfileFormSubmit(event) {
   profileNameElement.innerHTML = name;
   profileDescriptionElement.innerHTML = about;
   
-  hideModal();
+  handleDisplayModal();
 }
 
 
-editButtonElement.addEventListener('click', displayModal);
-modalCloseButtonElement.addEventListener('click', hideModal);
+editButtonElement.addEventListener('click', handleDisplayModal);
+modalCloseButtonElement.addEventListener('click', handleDisplayModal);
 modalFormElement.addEventListener('submit', handleProfileFormSubmit);
