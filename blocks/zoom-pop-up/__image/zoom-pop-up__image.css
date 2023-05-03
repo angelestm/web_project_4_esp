@@ -1,5 +1,5 @@
-.popUp-img__image {
-  z-index: 15;
+.zoom-pop-up__image {
+  z-index: 3;
   max-width: 75vw;
   max-height: 75vh;
 }
