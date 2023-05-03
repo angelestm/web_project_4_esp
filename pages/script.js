@@ -2,6 +2,13 @@ const editButtonElement = document.querySelector(".profile__edit-button");
 const popUpOneElement = document.querySelector("#pop-up1");
 const modalCloseButtonElement = document.querySelector("#close-button1");
 const modalFormElement = document.querySelector("#form1");
+const addButton = document.querySelector(".profile__add-button-container");
+const popUpTwo = document.querySelector("#pop-up2");
+const closeButton = document.querySelector("#close-button2");
+const formTwo = document.querySelector("#form2");
+const popUpThreeElement = document.querySelector("#pop-up3");
+const imagePopUpElement = document.querySelector("#image-popUp");
+const imagePopUpTitleElement = document.querySelector("#popUP-img-title");
 
 function handleDisplayModal() {
   popUpOneElement.classList.toggle("popup_opened");
@@ -55,17 +62,102 @@ const initialCards = [
   }
 ];
 
+const cardContainer = document.querySelector(".elements");
+
+/*función de eliminar tarjetas*/
+function deleteCard (elementId) {
+  document.getElementById(elementId).remove();
+}
+
+/*función de like*/
+function handleLike (likeId) {
+  document.getElementById(likeId).classList.toggle("element__like-button_black");
+}
+
+/*función de pop up de imagen de las tarjetas*/
+function handleOnClickCardImage (imgSrc, title) {
+  // debugging
+  console.log(imgSrc, title);
+  
+  // Actualizando los valores del pop up, imagen y titulo
+  imagePopUpElement.src = imgSrc;
+  imagePopUpTitleElement.innerHTML = title;
+  
+  // Displaying modal
+  handleDisplayModalImage();
+}
+
+for (let i = 0; i < initialCards.length; i++) {
+  const card = initialCards[i];
+  const cardName = card.name;
+  const cardLink = card.link;
+  const cardId = "card-" + i.toString();
+  const likeId = "like-" + i.toString();
+  
+  const cardHTML = `
+    <div class="element" id="${cardId}">
+      <img
+        src="images/trash-can.png" alt="Delete-Button" class="element__delete-button"
+        onclick="deleteCard('${cardId}')"
+      >
+      <img src="${cardLink}" alt="Foto del ${cardName}" class="element__image" onclick="handleOnClickCardImage('${cardLink}', '${cardName}')">
+      <div class="element__content">
+        <p class="element__description">${cardName}</p>
+        <img id="${likeId}"
+        src="images/LikeButton.png" alt="Like-Button" class="element__like-button"
+        onclick="handleLike('${likeId}')">
+      </div>
+    </div>
+  `;
+  
+  cardContainer.innerHTML += cardHTML;
+}
 
 
-const addButton = document.querySelector(".profile__add-button-container");
-const popUpTwo = document.querySelector("#pop-up2");
-const closeButton = document.querySelector("#close-button2");
-const FormTwo = document.querySelector("#form2");
-const deleteButton = document.querySelector(".element__delete-button");
 
 function handleDisplayModal2() {
   popUpTwo.classList.toggle("popup_opened");
 }
 
+function handleDisplayModalImage() {
+  popUpThreeElement.classList.toggle("popup_opened");
+}
+
+function handleCreateCardFormSubmit (event) {
+  event.preventDefault();
+  
+  const titleValue = document.querySelector("#title").value;
+  const linkValue = document.querySelector("#image-link").value;
+  
+  if (!!titleValue && !!linkValue) {
+    const cardId = "card-" + cardContainer.children.length.toString();
+    const likeId = "like-card-" + cardContainer.children.length.toString();
+  
+    const cardHTML = `
+    <div class="element" id="${cardId}">
+      <img
+        src="images/trash-can.png" alt="Delete-Button"
+        class="element__delete-button"
+        onclick="deleteCard('${cardId}')"
+      >
+      <img src="${linkValue}" alt="Foto del ${titleValue}" class="element__image" onclick="handleOnClickCardImage('${linkValue}', '${titleValue}')">
+      <div class="element__content">
+        <p class="element__description">${titleValue}</p>
+        <img id="${likeId}" src="images/LikeButton.png" alt="Like-Button" class="element__like-button" onclick="handlelike('${likeId}')">
+      </div>
+    </div>
+  `;
+  
+    cardContainer.innerHTML += cardHTML;
+  
+    // Limpiando el formulario
+    document.querySelector("#title").value = "";
+    document.querySelector("#image-link").value = "";
+  
+    handleDisplayModal2();
+  }
+}
+
 addButton.addEventListener('click', handleDisplayModal2);
 closeButton.addEventListener('click', handleDisplayModal2);
+formTwo.addEventListener('submit', handleCreateCardFormSubmit);

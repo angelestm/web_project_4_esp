@@ -4,3 +4,8 @@
   right: 15px;
   top: 18px;
 }
+
+.element__delete-button:hover {
+  color: #000000;
+  opacity: 0.7;
+}
