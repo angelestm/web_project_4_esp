@@ -23,8 +23,8 @@ function handleProfileFormSubmit(event) {
   const profileNameElement = document.querySelector(".profile__name");
   const profileDescriptionElement = document.querySelector(".profile__description");
   
-  profileNameElement.innerHTML = name;
-  profileDescriptionElement.innerHTML = about;
+  profileNameElement.textContent = name;
+  profileDescriptionElement.textContent = about;
   
   handleDisplayModal();
 }
@@ -87,33 +87,55 @@ function handleOnClickCardImage (imgSrc, title) {
   handleDisplayModalImage();
 }
 
-for (let i = 0; i < initialCards.length; i++) {
-  const card = initialCards[i];
-  const cardName = card.name;
-  const cardLink = card.link;
-  const cardId = "card-" + i.toString();
-  const likeId = "like-" + i.toString();
+function createCardElement (cardId, cardName, cardLink, likeId) {
+  const divElement = document.createElement("div");
+  divElement.classList.add("element");
+  divElement.id = cardId;
   
-  const cardHTML = `
-    <div class="element" id="${cardId}">
-      <img
-        src="images/trash-can.png" alt="Delete-Button" class="element__delete-button"
-        onclick="deleteCard('${cardId}')"
-      >
-      <img src="${cardLink}" alt="Foto del ${cardName}" class="element__image" onclick="handleOnClickCardImage('${cardLink}', '${cardName}')">
-      <div class="element__content">
-        <p class="element__description">${cardName}</p>
-        <img id="${likeId}"
-        src="images/LikeButton.png" alt="Like-Button" class="element__like-button"
-        onclick="handleLike('${likeId}')">
-      </div>
-    </div>
-  `;
+  const deleteElement = document.createElement("img");
+  deleteElement.src = "images/trash-can.png";
+  deleteElement.alt = "Delete-Button";
+  deleteElement.classList.add("element__delete-button");
+  deleteElement.addEventListener("click", () => deleteCard(cardId));
+  divElement.appendChild(deleteElement);
   
-  cardContainer.innerHTML += cardHTML;
+  const cardImgElement = document.createElement("img");
+  cardImgElement.src = cardLink;
+  cardImgElement.alt = `Foto del ${cardName}`;
+  cardImgElement.classList.add("element__image");
+  cardImgElement.addEventListener("click", () => handleOnClickCardImage(cardLink, cardName));
+  divElement.appendChild(cardImgElement);
+  
+  const divContentElement = document.createElement("div");
+  divContentElement.classList.add("element__content");
+  
+  const paragraphElement = document.createElement("p");
+  paragraphElement.classList.add("element__description");
+  paragraphElement.textContent = cardName;
+  
+  const LikeElement = document.createElement("img");
+  LikeElement.id = likeId;
+  LikeElement.src = "images/LikeButton.png";
+  LikeElement.alt = "Like-Button";
+  LikeElement.classList.add("element__like-button");
+  LikeElement.addEventListener("click", () => handleLike(likeId));
+  
+  divContentElement.appendChild(paragraphElement);
+  divContentElement.appendChild(LikeElement);
+  
+  divElement.appendChild(divContentElement);
+  return divElement;
 }
 
-
+initialCards.forEach((card, index) => {
+  const cardName = card.name;
+  const cardLink = card.link;
+  const cardId = "card-" + index.toString();
+  const likeId = "like-" + index.toString();
+  
+  const divElement = createCardElement(cardId, cardName, cardLink, likeId);
+  cardContainer.appendChild(divElement);
+});
 
 function handleDisplayModal2() {
   popUpTwo.classList.toggle("popup_opened");
@@ -132,23 +154,9 @@ function handleCreateCardFormSubmit (event) {
   if (!!titleValue && !!linkValue) {
     const cardId = "card-" + cardContainer.children.length.toString();
     const likeId = "like-card-" + cardContainer.children.length.toString();
-  
-    const cardHTML = `
-    <div class="element" id="${cardId}">
-      <img
-        src="images/trash-can.png" alt="Delete-Button"
-        class="element__delete-button"
-        onclick="deleteCard('${cardId}')"
-      >
-      <img src="${linkValue}" alt="Foto del ${titleValue}" class="element__image" onclick="handleOnClickCardImage('${linkValue}', '${titleValue}')">
-      <div class="element__content">
-        <p class="element__description">${titleValue}</p>
-        <img id="${likeId}" src="images/LikeButton.png" alt="Like-Button" class="element__like-button" onclick="handlelike('${likeId}')">
-      </div>
-    </div>
-  `;
-  
-    cardContainer.innerHTML += cardHTML;
+    
+    const divElement = createCardElement(cardId, titleValue, linkValue, likeId);
+    cardContainer.appendChild(divElement);
   
     // Limpiando el formulario
     document.querySelector("#title").value = "";
