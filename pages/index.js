@@ -81,7 +81,7 @@ function handleOnClickCardImage (imgSrc, title) {
   
   // Actualizando los valores del pop up, imagen y titulo
   imagePopUpElement.src = imgSrc;
-  imagePopUpTitleElement.innerHTML = title;
+  imagePopUpTitleElement.textContent = title;
   
   // Displaying modal
   handleDisplayModalImage();
