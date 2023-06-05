@@ -35,13 +35,14 @@
   <div class="pop-up__container">
     <img src="images/CloseIcon.png" alt="Icono de cerrar" class="pop-up__close-button" id="close-button1">
     <h2 class="pop-up__title">Editar perfil</h2>
-    <form class="form" id="form1">
-      <div class="user-box">
-        <input id="user-name" type="text" placeholder="Nombre">
-      </div>
-      <div class="user-box">
-        <input id="user-about" type="text" placeholder="Acerca de mí">
-      </div>
+    <form class="form" id="form1" novalidate>
+      <input
+          class="form__input" id="user-name" type="text" placeholder="Nombre"
+          maxlength="40" minlength="2" required
+      >
+      <span class="user-name-error"></span>
+      <input class="form__input" id="user-about" type="text" placeholder="Acerca de mí" maxlength="200" minlength="2" required>
+      <span class="user-about-error"></span>
       <button type="submit" class="button">Guardar</button>
     </form>
   </div>
@@ -50,13 +51,11 @@
   <div class="pop-up__container">
     <img src="images/CloseIcon.png" alt="Icono de cerrar" class="pop-up__close-button" id="close-button2">
     <h2 class="pop-up__title">Nuevo Lugar</h2>
-    <form class="form" id="form2">
-      <div class="user-box">
-        <input id="title" type="text" placeholder="Titulo">
-      </div>
-      <div class="user-box">
-        <input id="image-link" type="text" placeholder="Enlace a la imagen">
-      </div>
+    <form class="form" id="form2" novalidate>
+      <input class="form__input" id="title" type="text" placeholder="Titulo" maxlength="30" minlength="2" required>
+      <span class="title-error"></span>
+      <input class="form__input" id="image-link" type="url" placeholder="Enlace a la imagen" required>
+      <span class="image-link-error"></span>
       <button type="submit" class="button">Crear</button>
     </form>
   </div>
@@ -69,5 +68,6 @@
   </div>
 </div>
 <script src="pages/index.js"></script>
+<script src="pages/validity.js"></script>
 </body>
 </html>

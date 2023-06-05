@@ -16,6 +16,18 @@
   color: #FFFFFF;
 }
 
+.button:hover {
+  opacity: 0.8;
+}
+
+.button_disabled {
+  opacity: 0.2;
+}
+
+.button:disabled {
+  opacity: 0.2;
+}
+
 @media screen
 and (max-width: 320px) {
   .button {
