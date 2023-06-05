@@ -17,6 +17,8 @@ En este proyecto he aplicado los nuevos conocimientos en Javascript para poder a
 - Creación de formularios
 - Modal dentro de la página para actualizar información de usuario con el uso de Javascript
 - Uso de funciones de Javascript para hacer el contenido más dinámico
+- Modal para creación de nuevas tarjetas
+- Validación de formularios
 
 **GitHub Pages**
 
