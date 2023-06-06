@@ -11,6 +11,12 @@ const imagePopUpElement = document.querySelector("#image-popUp");
 const imagePopUpTitleElement = document.querySelector("#popUP-img-title");
 
 function handleDisplayModal() {
+  const currentProfileName = document.querySelector(".profile__name").textContent
+  const inputProfileName = document.getElementById("user-name");
+  inputProfileName.placeholder = currentProfileName;
+  const currentProfileAbout = document.querySelector(".profile__description").textContent
+  const inputProfileAbout = document.getElementById("user-about");
+  inputProfileAbout.placeholder = currentProfileAbout;
   popUpOneElement.classList.toggle("popup_opened");
 }
 
@@ -169,3 +175,15 @@ function handleCreateCardFormSubmit (event) {
 addButton.addEventListener('click', handleDisplayModal2);
 closeButton.addEventListener('click', handleDisplayModal2);
 formTwo.addEventListener('submit', handleCreateCardFormSubmit);
+
+
+document.onkeydown = function (evt){
+  if (evt.key === "Escape") {
+    popUpOneElement.classList.remove("popup_opened");
+    popUpTwo.classList.remove("popup_opened");
+  }
+};
+
+
+
+

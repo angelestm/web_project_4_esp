@@ -33,7 +33,7 @@
 </div>
 <div class="pop-up" id="pop-up1">
   <div class="pop-up__container">
-    <img src="images/CloseIcon.png" alt="Icono de cerrar" class="pop-up__close-button" id="close-button1">
+    <img src="images/CloseIcon.png" alt="Icono de cerrar" class="pop-up__close-button" id="close-button1" type="button">
     <h2 class="pop-up__title">Editar perfil</h2>
     <form class="form" id="form1" novalidate>
       <input
@@ -43,7 +43,7 @@
       <span class="user-name-error"></span>
       <input class="form__input" id="user-about" type="text" placeholder="Acerca de mí" maxlength="200" minlength="2" required>
       <span class="user-about-error"></span>
-      <button type="submit" class="button">Guardar</button>
+      <button type="submit" class="button" disabled>Guardar</button>
     </form>
   </div>
 </div>
@@ -56,7 +56,7 @@
       <span class="title-error"></span>
       <input class="form__input" id="image-link" type="url" placeholder="Enlace a la imagen" required>
       <span class="image-link-error"></span>
-      <button type="submit" class="button">Crear</button>
+      <button type="submit" class="button" disabled>Crear</button>
     </form>
   </div>
 </div>

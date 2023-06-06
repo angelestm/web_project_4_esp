@@ -1,24 +1,15 @@
 //Validación de formularios
 
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("form__input-error");
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add("form__input-span-error_active");
-};
-
-const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove("form__input-error");
-  errorElement.classList.remove("form__input-span-error_active");
-  errorElement.textContent = "";
-};
-
 const checkInputValidity = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    inputElement.classList.add("form__input-error");
+    errorElement.textContent = inputElement.validationMessage;
+    errorElement.classList.add("form__input-span-error_active");
   } else {
-    hideInputError(formElement, inputElement);
+    inputElement.classList.remove("form__input-error");
+    errorElement.classList.remove("form__input-span-error_active");
+    errorElement.textContent = "";
   }
   
   // Validando todos los inputs
