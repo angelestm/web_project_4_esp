@@ -176,6 +176,7 @@ addButton.addEventListener('click', handleDisplayModal2);
 closeButton.addEventListener('click', handleDisplayModal2);
 formTwo.addEventListener('submit', handleCreateCardFormSubmit);
 
+//Cerrar Modal con evento del teclado
 
 document.onkeydown = function (evt){
   if (evt.key === "Escape") {
@@ -184,6 +185,7 @@ document.onkeydown = function (evt){
   }
 };
 
+//Cerrar Modal On click
 
-
-
+popUpOneElement.addEventListener('click', handleDisplayModal);
+popUpTwo.addEventListener('click', handleDisplayModal2);
