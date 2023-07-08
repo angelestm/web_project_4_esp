@@ -1,4 +1,4 @@
-# Proyecto 4: Alrededor de los Estados Unidos
+# Proyecto 8: Alrededor de los Estados Unidos
 
 -----
 ### Descripción general
@@ -9,16 +9,15 @@
 
 **Introducción**
 
-En este proyecto he aplicado los nuevos conocimientos en Javascript para poder animar mi sitio web.
+En este proyecto he aplicado los nuevos conocimientos de Javascript para organizar mi código.
 
 **Descripción del proyecto**
 
-- En este proyecto he usado como herramienta a Figma como guía de prototipado del diseño
-- Creación de formularios
-- Modal dentro de la página para actualizar información de usuario con el uso de Javascript
-- Uso de funciones de Javascript para hacer el contenido más dinámico
-- Modal para creación de nuevas tarjetas
-- Validación de formularios
+- Creación de módulos
+- Uso de clases
+- Creación de métodos públicos y privados dentro de las clases
+- Uso de sentencias Export e Import
+- Crear una clase con sus métodos para la validación de los formularios
 
 **GitHub Pages**
 
