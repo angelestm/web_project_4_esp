@@ -33,7 +33,7 @@
 </div>
 <div class="pop-up" id="pop-up1">
   <div class="pop-up__container">
-    <img src="images/CloseIcon.png" alt="Icono de cerrar" class="pop-up__close-button" id="close-button1" type="button">
+    <img src="images/CloseIcon.png" alt="Icono de cerrar" class="pop-up__close-button" id="close-button1">
     <h2 class="pop-up__title">Editar perfil</h2>
     <form class="form" id="form1" novalidate>
       <input
@@ -67,7 +67,18 @@
     <h2 id="popUP-img-title" class="zoom-pop-up__title"></h2>
   </div>
 </div>
-<script src="pages/index.js"></script>
-<script src="pages/validity.js"></script>
+<template class="card">
+  <div class="element" id="card-0">
+    <img src="images/trash-can.png" alt="Delete-Button" class="element__delete-button">
+    <img src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg" alt="Foto del Valle de Yosemite" class="element__image">
+    <div class="element__content"><p class="element__description">Valle de Yosemite</p>
+      <img id="like-0" src="images/LikeButton.png" alt="Like-Button" class="element__like-button">
+    </div>
+  </div>
+</template>
+<script type="module" src="pages/index.js"></script>
+<script type="module" src="pages/utils.js"></script>
+<script type="module" src="pages/FormValidator.js"></script>
+<script type="module" src="pages/card.js"></script>
 </body>
 </html>
