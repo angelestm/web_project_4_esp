@@ -3,7 +3,7 @@ import {
   editButtonElement, formTwo,
   modalCloseButtonElement,
   modalFormElement,
-  popUpOneElement,
+  popUpOneElement, popUpThreeElement,
   popUpTwo
 } from "./index.js";
 import {CreateCard} from "./card.js";
@@ -70,6 +70,7 @@ document.onkeydown = function (evt){
   if (evt.key === "Escape") {
     popUpOneElement.classList.remove("popup_opened");
     popUpTwo.classList.remove("popup_opened");
+    popUpThreeElement.classList.remove("popup_opened");
   }
 };
 

@@ -48,7 +48,7 @@ initialCards.forEach((item) => {
   document.querySelector(".elements").append(cardElement);
 });
 
-// Instanciando las variables
+// Instanciando las variables del formulario
 const form1 = new FormValidator("form1");
 const form2 = new FormValidator("form2");
 

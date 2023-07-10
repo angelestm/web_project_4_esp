@@ -38,10 +38,11 @@
     <form class="form" id="form1" novalidate>
       <input
           class="form__input" id="user-name" type="text" placeholder="Nombre"
-          maxlength="40" minlength="2" required
+          maxlength="40" minlength="2" value="Jacques Cousteau" required
       >
       <span class="user-name-error"></span>
-      <input class="form__input" id="user-about" type="text" placeholder="Acerca de mí" maxlength="200" minlength="2" required>
+      <input class="form__input" id="user-about" type="text" placeholder="Acerca de mí"
+             maxlength="200" minlength="2" value="Explorador" required>
       <span class="user-about-error"></span>
       <button type="submit" class="button" disabled>Guardar</button>
     </form>
