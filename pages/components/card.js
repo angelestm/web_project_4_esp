@@ -1,18 +1,18 @@
-import {closeImagePopUpElement, imagePopUpElement, imagePopUpTitleElement, popUpThreeElement} from "./index.js";
+import {popupWithImage} from "./PopupWithImage.js";
 
 class Card {
-  constructor(cardSelector) {
+  constructor(data, cardSelector) {
+    this._link = data.link;
+    this._name = data.name;
     this._cardSelector =  cardSelector;
   }
   
   _getTemplate() {
-    const cardElement = document
+    return document
         .querySelector(this._cardSelector)
         .content
         .querySelector('.element')
         .cloneNode(true);
-    
-    return cardElement;
   }
   
   _handleLike() {
@@ -27,24 +27,20 @@ class Card {
     })
   }
   
-  _handleOpenPopup() {
-    imagePopUpElement.src = this._link;
-    imagePopUpTitleElement.textContent = this._name;
-    popUpThreeElement.classList.add("popup_opened");
-  }
-  
-  _handleClosePopup() {
-    imagePopUpElement.src = "";
-    popUpThreeElement.classList.remove("popup_opened");
-  }
+  // _handleOpenPopup() {
+  //   imagePopUpElement.src = this._link;
+  //   imagePopUpTitleElement.textContent = this._name;
+  //   popUpThreeElement.classList.add("popup_opened");
+  // }
+  //
+  // _handleClosePopup() {
+  //   imagePopUpElement.src = "";
+  //   popUpThreeElement.classList.remove("popup_opened");
+  // }
   
   _setEventListeners() {
     this._element.querySelector(".element__image").addEventListener("click", () => {
-      this._handleOpenPopup();
-    });
-    
-    closeImagePopUpElement.addEventListener("click", () => {
-      this._handleClosePopup();
+      popupWithImage.open(this._link, this._name);
     });
   }
   
@@ -54,6 +50,7 @@ class Card {
     
     this._element.querySelector(".element__image").src = this._link;
     this._element.querySelector(".element__description").textContent = this._name;
+    this._element.querySelector(".element__image").alt = `imagen de ${this._name}`;
     this._handleLike();
     this._deleteCard();
     
@@ -66,6 +63,7 @@ class DefaultCard extends Card {
     super(cardSelector);
     this._name = data.name;
     this._link = data.link;
+    this._cardSelector = cardSelector;
   }
 }
 

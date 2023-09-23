@@ -1,57 +1,55 @@
-import {FormValidator} from "./FormValidator.js";
-import {DefaultCard} from "./card.js";
+import {DefaultCard} from "./components/card.js";
+import {
+  addButton,
+  popUpOneElement,
+  popUpTwo,
+  initialCards,
+  editButtonElement
+} from "./components/constants.js";
+import PopupWithForm from "./components/PopupWithForm.js";
+import UserInfo from "./components/UserInfo.js";
+import Section from "./components/section.js";
 
-export const editButtonElement = document.querySelector(".profile__edit-button");
-export const popUpOneElement = document.querySelector("#pop-up1");
-export const modalCloseButtonElement = document.querySelector("#close-button1");
-export const modalFormElement = document.querySelector("#form1");
-export const addButton = document.querySelector(".profile__add-button-container");
-export const popUpTwo = document.querySelector("#pop-up2");
-export const closeButton = document.querySelector("#close-button2");
-export const formTwo = document.querySelector("#form2");
-export const popUpThreeElement = document.querySelector("#pop-up3");
-export const imagePopUpElement = document.querySelector("#image-popUp");
-export const imagePopUpTitleElement = document.querySelector("#popUP-img-title");
-export const closeImagePopUpElement = document.querySelector(".zoom-pop-up__close-button");
-const initialCards = [
-  {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
-  }
-];
-
-initialCards.forEach((item) => {
-  
-  const card = new DefaultCard(item, ".card");
+const generateCards = (data) => {
+  const card = new DefaultCard(data, ".card");
   const cardElement = card.generateCard();
-  
   document.querySelector(".elements").append(cardElement);
+}
+
+const section = new Section({
+  items: initialCards,
+  renderer: generateCards
+}, ".elements");
+section.renderer();
+
+// Crea una variable con la clase de UserInfo para actualizar la información
+// del usuario
+const userInfo = new UserInfo({
+  nameSelector: ".profile__name", aboutSelector: ".profile__description"
 });
 
-// Instanciando las variables del formulario
-const form1 = new FormValidator("form1");
-const form2 = new FormValidator("form2");
+// Crear una instancia para cada formulario, crear nueva tarjeta y editar perfil
+const editProfileForm = new PopupWithForm((formData) => {
+  userInfo.setUserInfo(formData.name, formData.about);
+  editProfileForm.close();
+}, popUpOneElement);
 
-// Ejecutando el metodo `enableValidation` en ambas clases
-form1.enableValidation();
-form2.enableValidation();
+const newCardForm = new PopupWithForm((formData) => {
+  const card = new DefaultCard(formData, ".card");
+  const cardElement = card.generateCard();
+  section.addItem(cardElement);
+  newCardForm.close();
+}, popUpTwo);
+
+// Seteando los event listeners de c/una de las variables de los formularios
+newCardForm.setEventListeners();
+editProfileForm.setEventListeners();
+
+// Agregando los eventListeners para el evento click de c/uno de los formularios
+addButton.addEventListener('click', () => {
+  newCardForm.open();
+});
+
+editButtonElement.addEventListener('click', () => {
+  editProfileForm.open();
+});
