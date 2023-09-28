@@ -1,4 +1,4 @@
-import "../styles/index.css";
+import "./index.css";
 import logoSrc from "../images/logo.png";
 import profilePhotoSrc from "../images/profile__photo.png";
 import editButtonSrc from "../images/EditButton.png";
@@ -7,17 +7,17 @@ import closeButton1Src from "../images/CloseIcon.png";
 import closeButton2Src from "../images/CloseIcon.png";
 import closeButton3Src from "../images/CloseIcon.png";
 
-import {DefaultCard} from "./components/card.js";
+import {DefaultCard} from "../components/card.js";
 import {
   addButton,
   popUpOneElement,
   popUpTwo,
   initialCards,
   editButtonElement
-} from "./components/constants.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import UserInfo from "./components/UserInfo.js";
-import Section from "./components/section.js";
+} from "../components/constants.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import Section from "../components/section.js";
 
 const logoImage = document.getElementById("logo");
 logoImage.src = logoSrc;

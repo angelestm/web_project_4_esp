@@ -1,7 +1,7 @@
 import {popupWithImage} from "./PopupWithImage.js";
-import likeButtonSrc from "../../images/LikeButton.png";
-import deleteButtonSrc from "../../images/trash-can.png";
-import likeBlackSrc from "../../images/likeButtonActive.jpg"
+import likeButtonSrc from "../images/LikeButton.png";
+import deleteButtonSrc from "../images/trash-can.png";
+import likeBlackSrc from "../images/likeButtonActive.jpg"
 
 class Card {
   constructor(data, cardSelector) {
