@@ -1,3 +1,12 @@
+import "../styles/index.css";
+import logoSrc from "../images/logo.png";
+import profilePhotoSrc from "../images/profile__photo.png";
+import editButtonSrc from "../images/EditButton.png";
+import addButtonSrc from "../images/Vector.png";
+import closeButton1Src from "../images/CloseIcon.png";
+import closeButton2Src from "../images/CloseIcon.png";
+import closeButton3Src from "../images/CloseIcon.png";
+
 import {DefaultCard} from "./components/card.js";
 import {
   addButton,
@@ -9,6 +18,21 @@ import {
 import PopupWithForm from "./components/PopupWithForm.js";
 import UserInfo from "./components/UserInfo.js";
 import Section from "./components/section.js";
+
+const logoImage = document.getElementById("logo");
+logoImage.src = logoSrc;
+const profileImage = document.getElementById("profilePhoto");
+profileImage.src = profilePhotoSrc;
+const editButtonImage = document.getElementById("editButton");
+editButtonImage.src = editButtonSrc;
+const addButtonImage = document.getElementById("addButton");
+addButtonImage.src = addButtonSrc;
+const closeButton1Image = document.getElementById("close-button1");
+closeButton1Image.src = closeButton1Src;
+const closeButton2Image = document.getElementById("close-button2");
+closeButton2Image.src = closeButton2Src;
+const closeButton3Image = document.getElementById("close-button3");
+closeButton3Image.src = closeButton3Src;
 
 const generateCards = (data) => {
   const card = new DefaultCard(data, ".card");

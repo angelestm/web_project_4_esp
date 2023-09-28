@@ -1,10 +1,5 @@
 export const editButtonElement = document.querySelector(".profile__edit-button");
 export const popUpOneElement = document.querySelector("#pop-up1");
-export const modalCloseButtonElement = document.querySelector("#close-button1");
-export const modalFormElement = document.querySelector("#form1");
-// export const closeButton = document.querySelector("#close-button2");
-export const formTwo = document.querySelector("#form2");
-// export const closeImagePopUpElement = document.querySelector(".zoom-pop-up__close-button");
 export const userName = document.querySelector(".profile__name");
 export const userAbout = document.querySelector(".profile__description");
 export const popUpThreeElement = document.querySelector("#pop-up3");

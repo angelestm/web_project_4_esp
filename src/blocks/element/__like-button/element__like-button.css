@@ -6,7 +6,3 @@
   color: #000000;
   opacity: 0.5;
 }
-
-.element__like-button_black {
-  background-image: url("/images/likeButtonActive.jpg");
-}
