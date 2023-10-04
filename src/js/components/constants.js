@@ -5,8 +5,6 @@ export const userAbout = document.querySelector(".profile__description");
 export const popUpThreeElement = document.querySelector("#pop-up3");
 export const popUpTwo = document.querySelector("#pop-up2");
 export const addButton = document.querySelector(".profile__add-button-container");
-
-
 export const initialCards = [
   {
     name: "Valle de Yosemite",
