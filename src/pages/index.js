@@ -14,7 +14,7 @@ import {
   popUpTwo,
   initialCards,
   editButtonElement
-} from "../script/components/constants.js";
+} from "../script/constants.js";
 import PopupWithForm from "../script/components/PopupWithForm.js";
 import UserInfo from "../script/components/UserInfo.js";
 import Section from "../script/components/section.js";

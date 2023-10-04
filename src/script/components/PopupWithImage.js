@@ -1,5 +1,5 @@
 import Popup from "./PopUp.js";
-import {popUpThreeElement} from "./constants.js";
+import {popUpThreeElement} from "../constants.js";
 
 
 export class PopupWithImage extends Popup {
