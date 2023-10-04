@@ -7,17 +7,17 @@ import closeButton1Src from "../images/CloseIcon.png";
 import closeButton2Src from "../images/CloseIcon.png";
 import closeButton3Src from "../images/CloseIcon.png";
 
-import {DefaultCard} from "../js/components/card.js";
+import {DefaultCard} from "../script/components/card.js";
 import {
   addButton,
   popUpOneElement,
   popUpTwo,
   initialCards,
   editButtonElement
-} from "../js/components/constants.js";
-import PopupWithForm from "../js/components/PopupWithForm.js";
-import UserInfo from "../js/components/UserInfo.js";
-import Section from "../js/components/section.js";
+} from "../script/components/constants.js";
+import PopupWithForm from "../script/components/PopupWithForm.js";
+import UserInfo from "../script/components/UserInfo.js";
+import Section from "../script/components/section.js";
 
 const logoImage = document.getElementById("logo");
 logoImage.src = logoSrc;
