@@ -1,7 +1,6 @@
 import Popup from "./PopUp.js";
 import {popUpThreeElement} from "../constants.js";
 
-
 export class PopupWithImage extends Popup {
   constructor(popUpThreeElement) {
     super(popUpThreeElement);
@@ -20,3 +19,10 @@ export class PopupWithImage extends Popup {
 
 export const popupWithImage = new PopupWithImage(popUpThreeElement);
 popupWithImage.setEventListeners();
+
+// Cerrar cuando das click fuera del contenido del pop-up
+popUpThreeElement.addEventListener("click", (event) => {
+  if (event.target.id !== "image-popUp") {
+    popupWithImage.close();
+  }
+});

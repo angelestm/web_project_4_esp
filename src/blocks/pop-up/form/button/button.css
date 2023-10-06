@@ -1,0 +1,36 @@
+.button {
+  width: 358px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  background: #000000;
+  border: none;
+  border-radius: 2px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.button_disabled {
+  opacity: 0.2;
+}
+
+.button:disabled {
+  opacity: 0.2;
+}
+
+@media screen
+and (max-width: 320px) {
+  .button {
+    width: 238px;
+  }
+}
