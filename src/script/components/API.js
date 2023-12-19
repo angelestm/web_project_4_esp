@@ -38,6 +38,9 @@ export class Api {
         .then((result) => {
           console.log(result);
           return result;
+        })
+        .catch((err) => {
+          console.log(err);
         });
   }
   
@@ -51,7 +54,10 @@ export class Api {
       .then((result) => {
         console.log(result);
         return result;
-      });
+      })
+        .catch((err) => {
+          console.log(err);
+        });
 }
 
   editAvatar(data) {
@@ -64,7 +70,10 @@ export class Api {
       .then((result) => {
         console.log(result);
         return result;
-      });
+      })
+        .catch((err) => {
+          console.log(err);
+        });
 }
 
   deleteCard(cardId) {
@@ -76,6 +85,9 @@ export class Api {
         .then((result) => {
           console.log(result);
           return result;
+        })
+        .catch((err) => {
+          console.log(err);
         });
   }
   
@@ -88,7 +100,10 @@ export class Api {
         .then((result) => {
           console.log(result);
           return result;
-        });
+        })
+        .catch((err) => {
+          console.log(err);
+          });
   }
   
   deleteLike(cardId) {
@@ -100,6 +115,9 @@ export class Api {
         .then((result) => {
           console.log(result);
           return result;
+        })
+        .catch((err) => {
+          console.log(err);
         });
   }
 
