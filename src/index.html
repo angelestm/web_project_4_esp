@@ -13,6 +13,7 @@
   </header>
   <main>
     <section class="profile">
+      <div class="profile__photo-overlay"></div>
       <img id="profilePhoto" alt="profile-photo" class="profile__photo">
       <div class="profile__info">
         <h2 class="profile__name">Jacques Cousteau</h2>
@@ -98,12 +99,40 @@
     <h2 id="popUP-img-title" class="zoom-pop-up__title"></h2>
   </div>
 </div>
+<div class="pop-up" id="pop-up4">
+  <div class="delete-pop-up__delete-container">
+    <img alt="Icono de cerrar" class="pop-up__close-button pop-up__close" id="close-button4">
+    <h2 class="delete-pop-up__title">¿Estás seguro?</h2>
+    <button type="submit" class="button">Sí</button>
+  </div>
+</div>
+<div class="pop-up" id="pop-up5">
+  <div class="pop-up__image-container">
+    <img alt="Icono de cerrar" class="pop-up__close-button pop-up__close" id="close-button5">
+    <h2 class="pop-up__title">Cambiar foto de perfil</h2>
+    <form class="form" id="form3" novalidate>
+      <input
+          class="form__input"
+          id="image-profile"
+          type="url"
+          placeholder="Enlace a la imagen"
+          required
+          name="link"
+      >
+      <span class="image-link-error"></span>
+      <button type="submit" class="button">Guardar</button>
+    </form>
+  </div>
+</div>
 <template class="card">
   <div class="element" id="card-0">
     <img id="deleteButton" alt="Delete-Button" class="element__delete-button">
     <img src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg" alt="Foto del Valle de Yosemite" class="element__image">
     <div class="element__content"><p class="element__description">Valle de Yosemite</p>
-      <img id="likeButton" alt="Like-Button" class="element__like-button">
+      <div>
+        <img id="likeButton" alt="Like-Button" class="element__like-button">
+        <p class="element__like-count">3</p>
+      </div>
     </div>
   </div>
 </template>

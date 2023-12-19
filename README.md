@@ -1,4 +1,4 @@
-# Proyecto 9: Alrededor de los Estados Unidos
+# Proyecto 10: Alrededor de los Estados Unidos
 
 -----
 ### Descripción general
@@ -18,6 +18,8 @@ En este proyecto he aplicado los nuevos conocimientos de Javascript para organiz
 - Creación de métodos públicos y privados dentro de las clases
 - Uso de sentencias Export e Import
 - Crear una clase con sus métodos para la validación de los formularios
+- Uso de APIS
+- Métodos para recibir y cargar datos al servidor mediante APIS
 
 **GitHub Pages**
 
