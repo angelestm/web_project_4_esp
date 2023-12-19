@@ -4,6 +4,7 @@ import deleteButtonSrc from "../../images/trash-can.png";
 import likeBlackSrc from "../../images/likeButtonActive.jpg"
 import Popup from "./PopUp";
 import {api, popUpDeleteCard, userId} from "../constants";
+import PopupWithConfirmation from "./PopupWithConfirmation";
 
 class Card {
   constructor(data, cardSelector) {
@@ -51,7 +52,7 @@ class Card {
   
   _deleteCard() {
     this._element.querySelector(".element__delete-button").addEventListener("click", () => {
-      const popupDeleteCard = new Popup(popUpDeleteCard);
+      const popupDeleteCard = new PopupWithConfirmation(popUpDeleteCard);
       popupDeleteCard.setEventListeners();
       popupDeleteCard.open();
       popUpDeleteCard.querySelector(".button").addEventListener("click", () => {
