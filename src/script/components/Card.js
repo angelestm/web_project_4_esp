@@ -2,7 +2,6 @@ import {popupWithImage} from "./PopupWithImage.js";
 import likeButtonSrc from "../../images/LikeButton.png";
 import deleteButtonSrc from "../../images/trash-can.png";
 import likeBlackSrc from "../../images/likeButtonActive.jpg"
-import Popup from "./PopUp";
 import {api, popUpDeleteCard, userId} from "../constants";
 import PopupWithConfirmation from "./PopupWithConfirmation";
 
