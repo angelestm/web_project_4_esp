@@ -4,125 +4,48 @@ export class Api {
     this._headers = headers;
   }
   
-  defaultProfile() {
-    return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers
-    })
+  base(pathURL, config) {
+    return fetch(pathURL, config)
         .then(res => {
           if (res.ok) {
             return res.json();
           }
         })
+        .then(result => result)
         .catch((err) => {
           console.log(err);
         });
   }
   
-  getUsersCards() {
-    return fetch(`${this._baseUrl}/cards`, {
+  getURL(pathURL) {
+    return this.base(`${this._baseUrl}${pathURL}`, {
       headers: this._headers
-    })
-        .then(res => {
-          if (res.ok) {
-            return res.json();
-          }
-          // si el servidor devuelve un error, rechaza el promise
-          return Promise.reject(`Error: ${res.status}`);
-        });
+    });
   }
   
-  updateProfile(data) {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify(data),
-    })
-        .then(res => res.json())
-        .then((result) => {
-          console.log(result);
-          return result;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+  updateURL(method, pathURL, data) {
+    let body = null;
+    if (data) {
+      body = JSON.stringify(data);
+    }
+    
+    const config = {
+      method: method,
+      headers: this._headers
+    }
+    
+    if (body) {
+      config["body"] = body;
+    }
+    
+    return this.base(`${this._baseUrl}${pathURL}`, config);
   }
   
-  addNewCard(data) {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: "POST",
-      headers: this._headers,
-      body: JSON.stringify(data)
-    })
-      .then(res => res.json())
-      .then((result) => {
-        console.log(result);
-        return result;
-      })
-        .catch((err) => {
-          console.log(err);
-        });
-}
-
-  editAvatar(data) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify(data),
-    })
-      .then(res => res.json())
-      .then((result) => {
-        console.log(result);
-        return result;
-      })
-        .catch((err) => {
-          console.log(err);
-        });
-}
-
-  deleteCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+  deleteURL(pathURL) {
+    return this.base(`${this._baseUrl}${pathURL}`, {
       method: "DELETE",
       headers: this._headers,
-    })
-        .then(res => res.json())
-        .then((result) => {
-          console.log(result);
-          return result;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    });
   }
-  
-  addLike(cardId) {
-    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-      method: "PUT",
-      headers: this._headers,
-    })
-        .then(res => res.json())
-        .then((result) => {
-          console.log(result);
-          return result;
-        })
-        .catch((err) => {
-          console.log(err);
-          });
-  }
-  
-  deleteLike(cardId) {
-    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-      method: "DELETE",
-      headers: this._headers,
-    })
-        .then(res => res.json())
-        .then((result) => {
-          console.log(result);
-          return result;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-  }
-
 }
 

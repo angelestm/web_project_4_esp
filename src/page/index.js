@@ -3,11 +3,11 @@ import logoSrc from "../images/logo.png";
 import profilePhotoSrc from "../images/profile__photo.png";
 import editButtonSrc from "../images/EditButton.png";
 import addButtonSrc from "../images/Vector.png";
-import closeButton1Src from "../images/CloseIcon.png";
-import closeButton2Src from "../images/CloseIcon.png";
-import closeButton3Src from "../images/CloseIcon.png";
-import closeButton4Src from "../images/CloseIcon.png";
-import closeButton5Src from "../images/CloseIcon.png";
+import closeButtonProfileSrc from "../images/CloseIcon.png";
+import closeButtonPlaceSrc from "../images/CloseIcon.png";
+import closeButtonImgPopUpSrc from "../images/CloseIcon.png";
+import closeButtonDeleteSrc from "../images/CloseIcon.png";
+import closeButtonAvatarSrc from "../images/CloseIcon.png";
 
 import {DefaultCard} from "../script/components/Card.js";
 import {
@@ -16,7 +16,13 @@ import {
   popUpOneElement,
   popUpTwo,
   initialCards,
-  editButtonElement, popUpEditProfilePhoto, editProfilePhotoButton, userName, userAbout, profileAvatar, userId
+  editButtonElement,
+  popUpEditProfilePhoto,
+  editProfilePhotoButton,
+  userName,
+  userAbout,
+  profileAvatar,
+  userId
 } from "../script/constants.js";
 import PopupWithForm from "../script/components/PopupWithForm.js";
 import UserInfo from "../script/components/UserInfo.js";
@@ -30,25 +36,23 @@ const editButtonImage = document.getElementById("editButton");
 editButtonImage.src = editButtonSrc;
 const addButtonImage = document.getElementById("addButton");
 addButtonImage.src = addButtonSrc;
-const closeButton1Image = document.getElementById("close-button1");
-closeButton1Image.src = closeButton1Src;
-const closeButton2Image = document.getElementById("close-button2");
-closeButton2Image.src = closeButton2Src;
-const closeButton3Image = document.getElementById("close-button3");
-closeButton3Image.src = closeButton3Src;
-const closeButton4Image = document.getElementById("close-button4");
-closeButton4Image.src = closeButton4Src;
-const closeButton5Image = document.getElementById("close-button5");
-closeButton5Image.src = closeButton5Src;
+const closeButtonProfileImage = document.getElementById("close-button1");
+closeButtonProfileImage.src = closeButtonProfileSrc;
+const closeButtonPlaceImage = document.getElementById("close-button2");
+closeButtonPlaceImage.src = closeButtonPlaceSrc;
+const closeButtonImgPopUpImage = document.getElementById("close-button3");
+closeButtonImgPopUpImage.src = closeButtonImgPopUpSrc;
+const closeButtonDeleteImage = document.getElementById("close-button4");
+closeButtonDeleteImage.src = closeButtonDeleteSrc;
+const closeButtonAvatarImage = document.getElementById("close-button5");
+closeButtonAvatarImage.src = closeButtonAvatarSrc;
 
-const defaultProfile = await api.defaultProfile();
-console.log("testing", defaultProfile);
+const defaultProfile = await api.getURL('/users/me');
 userName.innerHTML = defaultProfile.name;
 userAbout.innerHTML = defaultProfile.about;
 profileAvatar.src = defaultProfile.avatar;
 
-const usersCardsData = await api.getUsersCards();
-console.log("testing", usersCardsData);
+const usersCardsData = await api.getURL('/cards');
 
 const generateCards = (data) => {
   const owner = data.owner;
@@ -77,24 +81,41 @@ const userInfo = new UserInfo({
 // Crear una instancia para cada formulario, crear nueva tarjeta, editar perfil, editar imagen de perfil
 const editProfileForm = new PopupWithForm((formData) => {
   userInfo.setUserInfo(formData.name, formData.about);
-  api.updateProfile({name: formData.name, about: formData.about});
-  editProfileForm.close();
+  
+  // Buscar el boton para actualizar su texto
+  const formButton = editProfileForm._form.querySelector("button");
+  formButton.innerText = "Guardando...";
+  formButton.disabled = true;
+  
+  // LLamo a la API
+  api.updateURL("PATCH",
+      "/users/me",
+      {name: formData.name, about: formData.about}
+  )
+      .finally(() => {
+        formButton.innerText = "Guardar";
+        formButton.disabled = false;
+        editProfileForm.close();
+      });
+  
 }, popUpOneElement);
 
 const newCardForm = new PopupWithForm((formData) => {
-  api.addNewCard(formData).then((result) => {
-    const card = new DefaultCard({
-      ...formData,
-      _id: result._id
-    }, ".card", true);
-    const cardElement = card.generateCard();
-    section.addItem(cardElement);
-    newCardForm.close();
-  });
+  api
+      .updateURL("POST", "/cards", formData)
+      .then((result) => {
+        const card = new DefaultCard({
+          ...formData,
+          _id: result._id
+        }, ".card", true);
+        const cardElement = card.generateCard();
+        section.addItem(cardElement);
+        newCardForm.close();
+      });
 }, popUpTwo);
 
 const editProfilePhoto = new PopupWithForm((formData) => {
-  api.editAvatar({
+  api.updateURL("PATCH", "/users/me/avatar", {
     avatar: formData.link
   }).then(r => {
     profileImage.src = formData.link;
@@ -113,6 +134,11 @@ addButton.addEventListener('click', () => {
 });
 
 editButtonElement.addEventListener('click', () => {
+  const userName = editProfileForm._form.querySelector("#user-name");
+  const userAbout = editProfileForm._form.querySelector("#user-about");
+  
+  userName.value = userInfo.getUserInfo().name;
+  userAbout.value = userInfo.getUserInfo().about;
   editProfileForm.open();
 });
 

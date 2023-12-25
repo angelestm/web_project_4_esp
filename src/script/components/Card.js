@@ -29,15 +29,19 @@ class Card {
       const currentClassList = this._element.querySelector(".element__like-button").classList;
       if (currentClassList.contains("element__like-button_black")) {
         this._element.querySelector(".element__like-button").src = likeButtonSrc;
-        api.deleteLike(this._element.id).then((res => {
-          const likesInitArray = res.likes;
-    
-          this._element.querySelector(".element__like-count").textContent =
-              likesInitArray.length;
-        }))
+        api
+            .deleteURL(`/cards/likes/${this._element.id}`)
+            .then((res => {
+              const likesInitArray = res.likes;
+        
+              this._element.querySelector(".element__like-count").textContent =
+                  likesInitArray.length;
+            }));
       } else {
         this._element.querySelector(".element__like-button").src = likeBlackSrc;
-        api.addLike(this._element.id).then((res => {
+        api
+            .updateURL("PUT", `/cards/likes/${this._element.id}`)
+            .then((res => {
           const likesInitArray = res.likes;
     
           this._element.querySelector(".element__like-count").textContent =
@@ -56,10 +60,10 @@ class Card {
       popupDeleteCard.open();
       popUpDeleteCard.querySelector(".button").addEventListener("click", () => {
         if(!!this._id){
-          api.deleteCard(this._id).then(() => {
+          api.deleteURL(`/cards/${this._id}`).then(() => {
             this._element.remove();
             popupDeleteCard.close();
-          })
+          });
         }else{
           this._element.remove();
           popupDeleteCard.close();
